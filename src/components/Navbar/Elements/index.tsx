@@ -1,8 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  header {
+    padding: 0;
+    background: rgba(0, 0, 0, 0.85);
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    width: 100%;
+    height: 3rem;
+  }
+
   .logo {
     color: white;
+    font-size: 2rem;
     cursor: pointer;
   }
 
@@ -145,12 +156,4 @@ export const Container = styled.div`
       transform: scale(1, 1);
     }
   }
-`;
-
-export const Header = styled.header`
-  background: rgba(0, 0, 0, 0.85);
-  text-align: center;
-  position: relative;
-  z-index: 999;
-  width: 100%;
 `;

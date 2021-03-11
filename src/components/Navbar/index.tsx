@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Header } from "./Elements";
+import { Container } from "./Elements";
 import { NavItems } from "./interfaces";
 
 class Navbar extends Component<NavItems> {
   render() {
     return (
       <Container>
-        <Header>
+        <header>
           <h1 className="logo">Taxi Tracker</h1>
           <input type="checkbox" className="nav-toggle" id="nav-toggle" />
           <nav>
@@ -24,7 +24,7 @@ class Navbar extends Component<NavItems> {
           <label htmlFor="nav-toggle" className="nav-toggle-label">
             <span></span>
           </label>
-        </Header>
+        </header>
       </Container>
     );
   }

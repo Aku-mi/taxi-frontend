@@ -29,11 +29,16 @@ export const History: React.FC<RouteComponentProps> = ({ history }) => {
       lng: -74.7889,
       tmp: 0,
     },
+    {
+      lat: 10.99,
+      lng: -74.7889,
+      tmp: 0,
+    },
   ]);
 
   const getData = async () => {
     const res = await Get(`/datos`);
-    if (res) {
+    if (res.data.data) {
       setCoords((c) => {
         const newMarker = {
           lat: res.data.data.lat,
@@ -49,7 +54,9 @@ export const History: React.FC<RouteComponentProps> = ({ history }) => {
     if (ft === 0) {
       (async () => {
         const res = await Get("/datos2");
-        setCoords(res.data.data);
+        if (res.data.data[0] !== null && res.data.data[1] !== null) {
+          setCoords(res.data.data);
+        }
       })();
       setFt(1);
     }

@@ -19,7 +19,7 @@ export const Live: React.FC<RouteComponentProps> = ({ history }) => {
 
   const getData = async () => {
     const res = await Get(`/datos`);
-    if (res) {
+    if (res.data.data) {
       setCoords((c) => {
         const newMarker = {
           lat: res.data.data.lat,

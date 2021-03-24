@@ -20,13 +20,12 @@ export const Home: React.FC<RouteComponentProps> = ({ history }) => {
               className="card shadow p-3 mb-5 bg-body rounded"
               style={{ width: "18rem" }}
             >
-              <img src="./taxi.jpg" className="card-img-top" alt="..." />
+              <img src="./mapl.jpg" className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">Track Taxis</h5>
                 <p className="card-text">
                   see the location of your taxis in real time, it give you some
-                  information like the date, latitude and longitude. It shows
-                  you an icon for every taxi that uses our system.
+                  information like the date, latitude and longitude.
                 </p>
                 <Link to="/live" className="btn btn-secondary">
                   Live Track
@@ -39,16 +38,15 @@ export const Home: React.FC<RouteComponentProps> = ({ history }) => {
               className="card shadow p-3 mb-5 bg-body rounded"
               style={{ width: "18rem" }}
             >
-              <img src="./taxi.jpg" className="card-img-top" alt="..." />
+              <img src="./maph.jpg" className="card-img-top" alt="..." />
               <div className="card-body">
-                <h5 className="card-title">Coming Soon...</h5>
+                <h5 className="card-title">Track History</h5>
                 <p className="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-                  numquam deleniti suscipit et excepturi molestiae deserunt ab
-                  pariatur dolor. Consequatur?
+                  see the location of your taxis in real time, it also give you
+                  the the rutes that the taxis took every day.
                 </p>
-                <Link to="#" className="btn btn-secondary">
-                  Coming Soon...
+                <Link to="/history" className="btn btn-secondary">
+                  History
                 </Link>
               </div>
             </div>
@@ -62,9 +60,10 @@ export const Home: React.FC<RouteComponentProps> = ({ history }) => {
               <div className="card-body">
                 <h5 className="card-title">Coming Soon...</h5>
                 <p className="card-text">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Exercitationem veritatis aliquam iste labore eos vitae cum
-                  eaque asperiores unde consectetur!
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Eaque quam impedit labore, quod reprehenderit quia ipsam vitae
+                  deleniti amet fugit. Sapiente quos debitis, laudantium
+                  inventore testing this.
                 </p>
                 <Link to="#" className="btn btn-secondary">
                   Coming Soon...

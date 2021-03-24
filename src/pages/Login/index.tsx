@@ -19,7 +19,7 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
             role: res.data.user.role as string,
             accessToken: res.data.user.accessToken as string,
           });
-          history.push("/");
+          history.push("/home");
         } else {
           alert("Wrong!");
         }

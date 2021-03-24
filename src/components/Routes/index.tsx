@@ -3,6 +3,7 @@ import Navbar from "../Navbar/";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { RouteProps } from "./interfaces";
 import "./styles.css";
+import { Main } from "../../pages/Main";
 
 export const Routes: React.FC<RouteProps> = (props) => {
   return (
@@ -24,6 +25,7 @@ export const Routes: React.FC<RouteProps> = (props) => {
 
         <div className="cont">
           <Switch>
+            <Route key={100} exact path="/" component={Main} />
             {props.data.map((p) => (
               <Route
                 key={p.id}

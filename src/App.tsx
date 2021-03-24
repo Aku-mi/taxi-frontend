@@ -6,23 +6,24 @@ import { Routes } from "./components/Routes";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { storage } from "./services/storage";
+import { History } from "./pages/History";
 
 export const App: React.FC = () => {
   const [pass, setPass] = useState(false);
   const routes: RouteProp[] = [
     {
-      href: "/",
+      href: "/home",
       txt: "Home",
       id: 0,
       component: Home as React.FC,
-      visible: !pass,
+      visible: pass,
     },
     {
       href: "/live",
       txt: "Live",
       id: 1,
       component: Live as React.FC,
-      visible: !pass,
+      visible: pass,
     },
     {
       href: "/login",
@@ -32,11 +33,25 @@ export const App: React.FC = () => {
       visible: !pass,
     },
     {
+      href: "/history",
+      txt: "History",
+      id: 4,
+      component: History as React.FC,
+      visible: pass,
+    },
+    {
       href: "/register",
       txt: "Sign Up",
-      id: 4,
+      id: 5,
       component: Register as React.FC,
       visible: !pass,
+    },
+    {
+      href: "/log-out",
+      txt: "Log Out",
+      id: 6,
+      component: Home as React.FC,
+      visible: pass,
     },
   ];
 

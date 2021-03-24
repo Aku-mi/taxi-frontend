@@ -17,6 +17,13 @@ export const Container = styled.div`
     cursor: pointer;
   }
 
+  .link-logo {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
   .nav-toggle {
     display: none;
   }
@@ -84,6 +91,7 @@ export const Container = styled.div`
     text-decoration: none;
     font-size: 1rem;
     opacity: 0;
+    cursor: pointer;
     transition: opacity 150ms ease-in-out 250ms;
   }
 

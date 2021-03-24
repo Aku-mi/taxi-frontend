@@ -32,7 +32,7 @@ export const InputContainer = styled.div`
   margin: 20px 0;
   width: 25%;
   position: relative;
-  height: 50px;
+  height: 60px;
   overflow: hidden;
 
   input {

@@ -3,8 +3,8 @@ import { RouteComponentProps } from "react-router-dom";
 import { Map } from "../components/Map";
 import { Coord } from "../components/Map/interfaces";
 import { mapOptions } from "../components/Map/options";
-import { Get } from "../services";
 import { Auth } from "../services/auth";
+import { DateP } from "../components/Date";
 
 const polyOptions = {
   strokeColor: "#000090",
@@ -21,8 +21,6 @@ const polyOptions = {
 
 export const History: React.FC<RouteComponentProps> = ({ history }) => {
   const [auth, setAuth] = useState<boolean>(false);
-  const [ft, setFt] = useState<number>(0);
-
   const [coords, setCoords] = useState<Coord[]>([
     {
       lat: 10.9878,
@@ -30,52 +28,25 @@ export const History: React.FC<RouteComponentProps> = ({ history }) => {
       tmp: 0,
     },
     {
-      lat: 10.99,
+      lat: 10.987801,
       lng: -74.7889,
       tmp: 0,
     },
   ]);
 
-  const getData = async () => {
-    const res = await Get(`/datos`);
-    if (res.data.data) {
-      setCoords((c) => {
-        const newMarker = {
-          lat: res.data.data.lat,
-          lng: res.data.data.lng,
-          tmp: res.data.data.tmp,
-        };
-        return [...c, newMarker];
-      });
-    }
-  };
-
   useEffect(() => {
-    if (ft === 0) {
-      (async () => {
-        const res = await Get("/datos2");
-        if (res.data.data[0] !== null && res.data.data[1] !== null) {
-          setCoords(res.data.data);
-        }
-      })();
-      setFt(1);
-    }
-
+    console.log(coords);
     Auth(setAuth, history);
-    if (auth) {
-      const interval = setInterval(async () => {
-        await getData();
-      }, 400);
-      return () => clearInterval(interval);
-    }
-  }, [auth, history, coords, ft]);
+  }, [auth, history]);
 
   if (auth) {
     return (
       <div>
+        <DateP coords={setCoords} />
         <Map
           coords={coords}
-          isPoly
+          isPoly={coords.length > 1}
+          isMarker={coords.length < 2}
           mapOptions={mapOptions}
           polyOptions={polyOptions}
         />

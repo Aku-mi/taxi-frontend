@@ -14,7 +14,7 @@ export const Map: React.FC<MapParams> = (props) => {
 
   return (
     <div>
-      <LoadScript googleMapsApiKey="AIzaSyBTiR4vsuaY8Fw5lIaH7uOiIL2qG5qxGFM">
+      <LoadScript googleMapsApiKey="NO">
         <GoogleMap
           mapContainerStyle={props.mapOptions.containerStyle}
           zoom={props.mapOptions.zoom}

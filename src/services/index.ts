@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-const base = "http://akumi.me/api/";
+const base = "https://akumi.me/api/";
 
 export const Post = async (
   url: string,

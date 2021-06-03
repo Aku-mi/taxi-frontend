@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Btn } from "./Elements";
-import { Post } from "../../services";
-import { Coord } from "../Map/interfaces";
+import { storage } from "../../services/storage";
 
 export interface Datee {
   tmp1: number;
   tmp2: number;
 }
-export const DateP: React.FC<{ coords: (c: Coord[]) => void }> = (props) => {
+
+export interface Users {
+  name: string;
+  id: string;
+}
+
+interface Params {
+  clickHandler: (uid_: string, date: Datee) => void;
+  isAdmin: boolean;
+  users?: Users[];
+}
+
+export const DateP: React.FC<Params> = (props) => {
   const [date, setDate] = useState<Datee>({ tmp1: 0, tmp2: 0 });
+  const [uid, setUid] = useState<string>("all");
+
+  useEffect(() => {
+    setUid((c) => (props.isAdmin ? c : storage.user().id));
+  }, [props.isAdmin]);
+
   return (
     <Container>
       <form>
@@ -20,7 +37,7 @@ export const DateP: React.FC<{ coords: (c: Coord[]) => void }> = (props) => {
           onChange={(e) => {
             setDate((c) => {
               return {
-                tmp1: new Date(e.target.value).getTime() / 1000,
+                tmp1: new Date(e.target.value).getTime(),
                 tmp2: c.tmp2,
               };
             });
@@ -37,30 +54,35 @@ export const DateP: React.FC<{ coords: (c: Coord[]) => void }> = (props) => {
             setDate((c) => {
               return {
                 tmp1: c.tmp1,
-                tmp2: new Date(e.target.value).getTime() / 1000,
+                tmp2: new Date(e.target.value).getTime(),
               };
             });
           }}
           id="d2"
         />
         <br />
+
+        {props.isAdmin && (
+          <div>
+            <label htmlFor="slt" id="d3">
+              User
+            </label>
+            <select
+              id="slt"
+              value={uid}
+              onChange={(e) => setUid(e.target.value)}
+            >
+              <option value="all">All Users</option>
+              {props.users?.map((u) => (
+                <option value={u.id} key={u.id}>
+                  {u.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </form>
-      <Btn
-        onClick={async () => {
-          const res = await Post("/time-set", date);
-          if ((res.data.data as []).length < 1) {
-            props.coords([{ lat: 0, lng: 0, tmp: 0 }]);
-          } else {
-            props.coords(res.data.data);
-          }
-          // props.coords([
-          //   { lat: 10.9878, tmp: 0, lng: -74.7889 },
-          //   { lat: 10.9878, tmp: 0, lng: -74.789 },
-          // ]);
-        }}
-      >
-        View
-      </Btn>
+      <Btn onClick={() => props.clickHandler(uid, date)}>View</Btn>
     </Container>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Main: React.FC<RouteComponentProps> = () => {

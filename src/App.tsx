@@ -7,6 +7,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { storage } from "./services/storage";
 import { History } from "./pages/History";
+import { Charts } from "./pages/Chart/Charts";
 
 export const App: React.FC = () => {
   const [pass, setPass] = useState(false);
@@ -26,18 +27,25 @@ export const App: React.FC = () => {
       visible: pass,
     },
     {
-      href: "/login",
-      txt: "Sign In",
-      id: 3,
-      component: Login as React.FC,
-      visible: !pass,
-    },
-    {
       href: "/history",
       txt: "History",
-      id: 4,
+      id: 2,
       component: History as React.FC,
       visible: pass,
+    },
+    {
+      href: "/charts",
+      txt: "Charts",
+      id: 3,
+      component: Charts as React.FC,
+      visible: pass,
+    },
+    {
+      href: "/login",
+      txt: "Sign In",
+      id: 4,
+      component: Login as React.FC,
+      visible: !pass,
     },
     {
       href: "/register",

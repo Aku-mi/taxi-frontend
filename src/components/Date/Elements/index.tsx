@@ -13,12 +13,20 @@ export const Container = styled.div`
   flex-direction: column;
   input {
     margin: 5px 0;
+    width: 180px;
   }
   #d11 {
     margin-right: 6px;
   }
   #d22 {
-    margin-right: 24px;
+    margin-right: 25px;
+  }
+  #d3 {
+    margin-right: 9px;
+  }
+  #slt {
+    width: 180px;
+    margin: 5px 0px;
   }
 `;
 

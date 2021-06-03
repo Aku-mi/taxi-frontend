@@ -17,7 +17,7 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
             userName: res.data.user.user as string,
             id: res.data.user.id as string,
             role: res.data.user.role as string,
-            accessToken: res.data.user.accessToken as string,
+            accessToken: res.data.accessToken as string,
           });
           history.push("/home");
         } else {
